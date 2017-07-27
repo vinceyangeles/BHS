@@ -21,11 +21,13 @@ public class PlayerControl : MonoBehaviour {
         {
             transform.Translate(Vector2.right * 8f * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
+            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector2.right * 8f * Time.deltaTime);
+            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             transform.eulerAngles = new Vector2(0, 180);
         }
 
