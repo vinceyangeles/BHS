@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour {
+public class PlayerControl : MonoBehaviour
+{
 
-    public bool grounded = false;
-    public Transform groundedEnd;
+    public bool isGrounded = false;
+    public Vector2 jumpVector;
+    public Transform grounded;
+    public float radius;
+    public LayerMask ground;
 
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
         Movement();
-        Raycasting();
-	}
+    }
 
     void Movement()
     {
@@ -31,14 +34,11 @@ public class PlayerControl : MonoBehaviour {
             transform.eulerAngles = new Vector2(0, 180);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 500f);
+            GetComponent<Rigidbody2D>().AddForce(jumpVector, ForceMode2D.Force);
         }
-    }
 
-    void Raycasting()
-    {
-        grounded = Physics2D.Linecast(this.transform.position, groundedEnd.position, 1 << LayerMask.NameToLayer("Ground"));
+        isGrounded = Physics2D.OverlapCircle(grounded.transform.position, radius, ground);
     }
 }
