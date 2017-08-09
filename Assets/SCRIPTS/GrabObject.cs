@@ -22,7 +22,7 @@ public class GrabObject : MonoBehaviour
     void Update()
     {
         //GRABBING
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
             if (!grabbed)
@@ -46,8 +46,7 @@ public class GrabObject : MonoBehaviour
 
                 if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
                 {
-
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.35f) * throwforce;
                 }
             }
 
