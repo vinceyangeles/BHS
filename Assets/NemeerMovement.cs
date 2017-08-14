@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement2 : MonoBehaviour {
+public class NemeerMovement : MonoBehaviour {
 
     //Walking Animation
     public float speed = 5f;
@@ -23,11 +23,12 @@ public class PlayerMovement2 : MonoBehaviour {
 	
 	void Update ()
     {
-		if(Input.GetKey(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.A))
         {
             anim.SetBool("Moving", true);
             GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-1.2f, 1.2f, 1.2f);
             transform.eulerAngles = new Vector2(0, 360);
         }
 
@@ -35,7 +36,7 @@ public class PlayerMovement2 : MonoBehaviour {
         {
             anim.SetBool("Moving", true);
             GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             transform.eulerAngles = new Vector2(0, 0);
         }
 
